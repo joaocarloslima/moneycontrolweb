@@ -19,7 +19,7 @@ export default function NavBar(props: NavBarProps) {
             <h1 className="text-2xl font-bold">MoneyControl</h1>
             <ul className="flex gap-12">
                 {links.map(link =>
-                    <li className={active === link.label ? classActive : ""}>
+                    <li key={link.label} className={active === link.label ? classActive : ""}>
                         <Link href={link.href}>
                             {link.label}
                         </Link>
