@@ -12,7 +12,7 @@ const links = [
 
 export default function NavBar(props: NavBarProps) {
     const { active } = props
-    const classActive = "border-b-4 border-emerald-600"
+    const classActive = "border-b-4 border-primary"
 
     return (
         <nav className="flex justify-between bg-slate-900 px-6 pt-6">
