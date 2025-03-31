@@ -12,6 +12,10 @@ const initialState = {
     values: {
         name: "",
         icon: ""
+    },
+    errors: {
+        name:"",
+        icon: ""
     }
 }
 
@@ -30,8 +34,25 @@ export default function CategoryFormPage() {
                     </h2>
 
                     <form action={formAction} className="space-y-4">
-                        <Input name="name" placeholder="nome da categoria" />
-                        <Input name="icon" placeholder="ícone" />
+                        <div>
+                            <Input 
+                                name="name" 
+                                placeholder="nome da categoria" 
+                                aria-invalid={!!state?.errors.name} 
+                                defaultValue={state?.values.name} 
+                            />
+                            <span className="text-sm text-destructive">{state?.errors.name}</span>
+                        </div>
+
+                        <div>
+                            <Input 
+                                name="icon" 
+                                placeholder="nome do ícone" 
+                                aria-invalid={!!state?.errors.icon}
+                                defaultValue={state?.values.icon}
+                            />
+                            <span className="text-sm text-destructive">{state?.errors.icon}</span>
+                        </div>
 
                         <div className="flex justify-around">
                             <Button variant="outline" asChild>

@@ -1,3 +1,5 @@
+import { icons } from "lucide-react"
+import { redirect } from "next/navigation"
 
 const API_URL = "http://localhost:8080/categories"
 
@@ -24,7 +26,24 @@ export async function createCategory(initialState: any, formData: FormData) {
         body: JSON.stringify(data)
     }
 
-    fetch(API_URL, options)
+    const response = await fetch(API_URL, options)
+
+    // return early
+    if (!response.ok){
+        const errors = await response.json()
+        return {
+            values: {
+                name: formData.get("name"),
+                icon: formData.get("icon")
+            },
+            errors: {
+                name: errors.find(e => e.field === "name")?.message,
+                icon: errors.find(e => e.field === "icon")?.message
+            }
+        }
+    }
+
+    redirect("/categories")
 }
 
 
