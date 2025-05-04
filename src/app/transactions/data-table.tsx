@@ -83,7 +83,6 @@ export default function TransactionsTable({ data }: TransactionsTableProps) {
 
     }, [page, size, sort, description, date])
 
-
     return (
         <>
             <div>
